@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveU Employees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #212529;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employees List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in objects %}
+        <tr>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.DOB }}</td>
+            <td>{{ employee.mobile_number }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+                <a href="{% url 'employee_delete' employee.id %}">Delete</a>
+                <a href="{% url 'employee_add' %}">Add</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
